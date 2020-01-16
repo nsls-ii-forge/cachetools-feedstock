@@ -1,0 +1,36 @@
+{% set name = "cachetools" %}
+{% set version = "3.1.1" %}
+{% set sha256 = "8ea2d3ce97850f31e4a08b0e2b5e6c34997d7216a9d2c98e0f3978630d4da69a" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+
+test:
+  imports:
+    - cachetools
+
+about:
+  home: https://github.com/tkem/cachetools
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'Extensible memoizing collections and decorators'
+  doc_url: http://pythonhosted.org/cachetools/
+  dev_url: https://github.com/tkem/cachetools
